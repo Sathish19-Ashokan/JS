@@ -1,8 +1,10 @@
 function pascal(line){
     let op=[];
+    let sum = "";
     for(let row=0; row<line; row++)
     {
         let current=[];
+        let str = "";
         for(let col=0; col<=row; col++)
         {
             if(col===0 || col===row)
@@ -12,8 +14,16 @@ function pascal(line){
             }
         }
         op.push(current);
+            for(let i=1;i<=line-row; i++)
+            {
+                sum = sum + " ";
+            }
+            for(let j=0; j<current.length; j++){
+                str = " " + current[j].toString() + str;
+            
+            }
+        console.log(`${sum}${str}`);
+        sum="";
     }
-    return op;
 }
-
-console.log(pascal(5));
+pascal(5);
