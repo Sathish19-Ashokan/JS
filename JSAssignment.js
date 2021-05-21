@@ -1,18 +1,25 @@
-function oneTriangle(lines){
-    let x=1;
-    let sum = "";
-    for(let i=1; i<=lines; i++)
+let arr = [10,3,5,12,5,3,9,1];
+let count = 0;
+let duplicate = 0;
+let copy=[];
+for(let i=0; i<arr.length; i++)
+{
+    let item = arr[i];
+    for(let dup=0; dup<copy.length; dup++)
     {
-        for(let j=1; j<=lines-i; j++){
-            sum = sum + " ";
-        }
-        for(let k=1; k<=x; k++){
-            sum = sum + "1";
-        }
-        console.log(sum);
-        sum="";
-        x=x+2;
+        if(item === copy[dup])
+        duplicate++;
     }
+    if(duplicate === 0){
+        for(let j=0; j<arr.length; j++){
+            if(item === arr[j])
+            {
+                count++;
+            }
+        }
+        console.log(`${item} occured ${count} times`);
+    }
+    copy.push(item);
+    count=0;
+    duplicate=0;
 }
-
-oneTriangle(5);
