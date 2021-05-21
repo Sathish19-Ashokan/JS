@@ -9,9 +9,6 @@ function oneTriangle(lines){
         for(let k=1; k<=x; k++){
             sum = sum + "1";
         }
-        for(let l=1; l<=lines-i; l++){
-            sum = sum + " ";
-        }
         console.log(sum);
         sum="";
         x=x+2;
