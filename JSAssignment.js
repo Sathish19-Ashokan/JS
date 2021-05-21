@@ -1,21 +1,19 @@
-function oneTriangle(lines){
-    let x=1;
-    let sum = "";
-    for(let i=1; i<=lines; i++)
+function pascal(line){
+    let op=[];
+    for(let row=0; row<line; row++)
     {
-        for(let j=1; j<=lines-i; j++){
-            sum = sum + " ";
+        let current=[];
+        for(let col=0; col<=row; col++)
+        {
+            if(col===0 || col===row)
+            current.push(1);
+            else{
+                current.push((op[row-1][col-1]+op[row-1][col]));
+            }
         }
-        for(let k=1; k<=x; k++){
-            sum = sum + "1";
-        }
-        for(let l=1; l<=lines-i; l++){
-            sum = sum + " ";
-        }
-        console.log(sum);
-        sum="";
-        x=x+2;
+        op.push(current);
     }
+    return op;
 }
 
-oneTriangle(5);
+console.log(pascal(5));
