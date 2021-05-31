@@ -1,83 +1,80 @@
-function Stack(MaxSize){
-    let func = {};
-    func.MaxSize = MaxSize;
-    func.top = -1;
-    func.arr = [];
+function Stack(Maxsize) {
+    let MaxSize = Maxsize;
+    let top = -1;
+    let arr = [];
 
-    func.push = function (element){
-        this.top++;
-        if(this.top >=0 && this.top < this.MaxSize){
-            this.arr[this.top] = element;
-         }
-        else{
-            this.top--;
+    function push(element) {
+        top++;
+        if (top >= 0 && top < MaxSize) {
+            arr[top] = element;
+        }
+        else {
+            top--;
             return "Stack Overflow";
         }
     }
 
-    func.pop = function (){
-        if(this.top >=0 && this.top < this.MaxSize){
-            let del = this.arr[this.top];
+    function pop() {
+        if (top >= 0 && top < MaxSize) {
+            let del = arr[top];
             let temp = [];
-            temp = this.arr;
-            this.arr = [];
-            for(let i=0; i<this.top ; i++){
-                this.arr[i] = temp[i];
+            temp = arr;
+            arr = [];
+            for (let i = 0; i < top; i++) {
+                arr[i] = temp[i];
             }
-            this.top--;
+            top--;
             return del;
         }
-        else{
+        else {
             return "Stack UnderFlow";
         }
     }
 
-    return func;
+    return Object.freeze({ push, pop });
 }
 
-function Queue(MaxSize1){
-    let func = {};
-    func.MaxSize1 = MaxSize1;
-    func.front = -1;
-    func.top = -1;
-    func.arr = [];
+function Queue(Maxsize1) {
+    let MaxSize1 = Maxsize1;
+    let front = -1;
+    let top = -1;
+    let arr = [];
 
-    func.add = function (element){
-        
-        this.top++;
-        if(this.top === 0){
-            this.front = 0;
+    function add(element) {
+
+        top++;
+        if (top === 0) {
+            front = 0;
         }
-        if(this.top >= 0 && this.top < this.MaxSize1)
-        {
-            this.arr[this.top] = element;
+        if (top >= 0 && top < MaxSize1) {
+            arr[top] = element;
         }
-        else{
-            this.top--;
+        else {
+            top--;
             return "Queue overflow";
         }
     }
 
-    func.remove = function (){
-        if(this.top === 0){
-            this.top--;
-            return this.arr[0];
+    function remove() {
+        if (top === 0) {
+            top--;
+            return arr[0];
         }
-        if(this.top > 0 && this.top < this.MaxSize1){
-            let del = this.arr[0];
+        if (top > 0 && top < MaxSize1) {
+            let del = arr[0];
             let temp = [];
-            temp = this.arr;
-            this.arr = [];
-            for(let i=0; i<this.top ; i++){
-                this.arr[i] = temp[i+1];
+            temp = arr;
+            arr = [];
+            for (let i = 0; i < top; i++) {
+                arr[i] = temp[i + 1];
             }
-            this.top--;
+            top--;
             return del;
         }
-        else{
+        else {
             return "Queue UnderFlow";
         }
     }
 
-    return func;
+    return Object.freeze({add,remove});
 }
