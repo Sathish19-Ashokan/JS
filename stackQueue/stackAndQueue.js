@@ -34,6 +34,12 @@ const stack = {
         if(this.top >=0 && this.top < this.MaxSize){
             //console.log(this.top);
             let del = this.arr[this.top];
+            let temp = [];
+            temp = this.arr;
+            this.arr = [];
+            for(let i=0; i<this.top ; i++){
+                this.arr[i] = temp[i];
+            }
             this.top--;
             return (`Poped element is ${del}. From index = ${this.top + 1}`);
         }
@@ -81,11 +87,18 @@ const stack = {
             return (`Removed element = ${this.arr[0]}  From index = 0`);
         }
         if(this.top > 0 && this.top < this.MaxSize1){
-            for(let i=0 ; i<this.top ; i++){
-                this.arr[i] = this.arr[i+1];
+            let del = this.arr[0];
+            let temp = [];
+            temp = this.arr;
+            this.arr = [];
+            for(let i=0; i<this.top ; i++){
+                this.arr[i] = temp[i+1];
             }
+            // for(let i=0 ; i<this.top ; i++){
+            //     this.arr[i] = this.arr[i+1];
+            // }
             this.top--;
-            return ("deleted");
+            return (`Removed element = ${del}  From index = 0`);
         }
         else{
             return (`Queue UnderFlow. Current Index = ${this.top}`);
