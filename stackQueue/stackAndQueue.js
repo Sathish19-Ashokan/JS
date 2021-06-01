@@ -31,7 +31,8 @@ function Stack(Maxsize) {
         }
     }
 
-    return Object.freeze({ push, pop });
+    //return Object.freeze({ push, pop });
+    return {push,pop};
 }
 
 function Queue(Maxsize1) {
@@ -76,5 +77,6 @@ function Queue(Maxsize1) {
         }
     }
 
-    return Object.freeze({add,remove});
+    //return Object.freeze({add,remove});
+    return {add,remove};
 }
