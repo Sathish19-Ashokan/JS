@@ -14,7 +14,6 @@ const promises = [fakeAjax("1st"), fakeAjax("2nd"), fakeAjax("3rd")];
 
 function processPromises(promises) {
     //  Fill the code here. 
-
     promises.reduce(async function (storing, nextValue, index) {
         await storing
             .then(value => {
