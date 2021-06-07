@@ -14,30 +14,13 @@ const promises = [fakeAjax("1st"), fakeAjax("2nd"), fakeAjax("3rd")];
 
 function processPromises(promises) {
     //  Fill the code here. 
-    //for (let FakeAjax of promises) {
-        //console.log("output", i);
-        // fakeAjax(FakeAjax)
-        //     .then(text => {
-        //         console.log(text);
-        //     })
-    //}
-    // for(i=0;i<promises.length;i++){
-    //     promises[i].then(value => {
-    //         console.log(value);
-    //     })
-    // }
 
-    promises[0].then(value =>{
-        console.log(value);
-        return promises[1];
-    })
-
-    .then(value =>{
-        console.log(value);
-        return promises[2]
-    })
-
-    .then(value =>{
-        console.log(value);
-    })
+    promises.reduce(async function (storing, nextValue, index) {
+        await storing
+            .then(value => {
+                console.log(value);
+            })
+        //return nextValue;
+        return promises[index + 1];
+    }, promises[0]);
 }
